@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mí - JAFET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <style>
+    .loader {
+      display: flex;
+      gap: 64px;
+    }
+    
+    .symbol {
+      width: 100px;
+      height: 100px;
+      overflow: visible;
+      opacity: 0;
+      animation: popIn .45s ease-out var(--delay) forwards;
+    }
+    
+    .symbol svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      display: block;
+    }
+    
+    .outline {
+      fill: none;
+      stroke: var(--path);
+      stroke-width: 10px;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 4px var(--path)) 
+              drop-shadow(0 0 8px var(--path)) 
+              drop-shadow(0 0 16px var(--path));
+      animation: flicker .8s linear var(--delay), 
+                breathe 3s ease-in-out calc(.8s + var(--delay)) infinite;
+    }
+    
+    .dot {
+      fill: var(--dot);
+      filter: drop-shadow(0 0 4px var(--dot)) 
+              drop-shadow(0 0 8px var(--dot)) 
+              drop-shadow(0 0 16px var(--dot));
+      transform-origin: 50% 50%;
+      transform-box: fill-box;
+      animation: flicker .8s linear var(--delay), 
+                breathe 3s ease-in-out calc(.8s + var(--delay)) infinite;
+    }
+    
+    .circ { --path: #14f1ff; --dot: #ff00c8; --delay: 0s; }
+    .tri  { --path: #00ff9d; --dot: #ffe600; --delay: .45s; }
+    .sq   { --path: #ff9100; --dot: #00d9ff; --delay: .9s;  }
+    
+    .circ .dot { animation: rotar 2.2s linear infinite calc(.8s + var(--delay)), 
+                flicker .8s linear var(--delay), 
+                breathe 3s ease-in-out calc(.8s + var(--delay)) infinite; }
+    .tri .dot  { animation: triMove 2.6s linear infinite calc(.8s + var(--delay)), 
+                flicker .8s linear var(--delay), 
+                breathe 3s ease-in-out calc(.8s + var(--delay)) infinite; }
+    .sq .dot   { animation: sqMove 2.6s linear infinite calc(.8s + var(--delay)), 
+                flicker .8s linear var(--delay), 
+                breathe 3s ease-in-out calc(.8s + var(--delay)) infinite; }
+    
+    @keyframes popIn {
+      0% { transform: scale(.3); opacity: 0; }
+      60% { opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes rotar { to { transform: rotate(360deg) translateY(-24px); } }
+    
+    @keyframes triMove {
+      0%,100% { transform: translate(0px, -24px); }
+      33% { transform: translate(22px, 44px); }
+      66% { transform: translate(-22px, 44px); }
+    }
+    
+    @keyframes sqMove {
+      0%,100% { transform: translate(0px, -24px); }
+      25% { transform: translate(26px, 0px); }
+      50% { transform: translate(0px, 26px); }
+      75% { transform: translate(-26px, 0px); }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../HTML/index.html">JAFET</a> <span>/ Sobre Mí</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="../HTML/index.html">Inicio</a></li>
+                    <li><a href="../HTML/index.html#materia">Materias</a></li>
+                    <li><a href="../HTML/index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about-me" class="container">
+        <div class="loader">
+            <!-- Círculo -->
+            <div class="symbol circ">
+                <svg viewBox="0 0 64 64">
+                    <circle class="outline" cx="32" cy="32" r="20"/>
+                    <circle class="dot" cx="32" cy="12" r="4"/>
+                </svg>
+            </div>
+            
+            <!-- Triángulo -->
+            <div class="symbol tri">
+                <svg viewBox="0 0 64 64">
+                    <polygon class="outline" points="32,12 52,52 12,52"/>
+                    <circle class="dot" cx="32" cy="12" r="4"/>
+                </svg>
+            </div>
+            
+            <!-- Cuadrado -->
+            <div class="symbol sq">
+                <svg viewBox="0 0 64 64">
+                    <rect class="outline" x="16" y="16" width="32" height="32" rx="5"/>
+                    <circle class="dot" cx="32" cy="12" r="4"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="bio">
+            <h2>¡Hola! Soy <span style="color: var(--primary-color)">JAFET</span></h2>
+            <p>Estudiante de desarrollo de software apasionado por la tecnología móvil y el diseño de interfaces futuristas.</p>
+            <div class="skills">
+                <h3>Habilidades:</h3>
+                <ul>
+                    <li><i class="fas fa-code"></i> Kotlin/Java</li>
+                    <li><i class="fas fa-robot"></i> Android Studio</li>
+                    <li><i class="fas fa-paint-brush"></i> UI/UX</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 JAFET - Portafolio Neón</p>
+        </div>
+    </footer>
+</body>
+</html>

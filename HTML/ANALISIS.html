@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis - JAFET E-Portafolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="../HTML/index.html">JAFET</a> <span>/ Análisis</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="../HTML/index.html">Inicio</a></li>
+                    <li><a href="../HTML/index.html#materia">Materias</a></li>
+                    <li><a href="../HTML/index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="materia-content" class="container">
+        <h2>Trabajos de Análisis</h2>
+        
+        <div class="parcial-section">
+            <h3><i class="fas fa-book-open"></i> Parcial 1</h3>
+            
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-podcast"></i>
+                </div>
+                <div class="project-content">
+                    <h4>1.1.- Conceptos de POO (Podcast)</h4>
+                    <p>Audio explicativo sobre los conceptos básicos de Programación Orientada a Objetos.</p>
+                    <a href="https://drive.google.com/drive/folders/1OfmqyGzpXZM635ahaUxaJ52AAOD454sY?usp=sharing" target="_blank" class="btn">
+                        <i class="fas fa-external-link-alt"></i> Ver en Google Drive
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Proyectos existentes del Parcial 1 -->
+            <!-- ... (tus proyectos 1.2 a 1.7 existentes) ... -->
+        </div>
+
+        <!-- NUEVO CONTENIDO PARA EL PARCIAL 2 -->
+        <div class="parcial-section">
+            <h3><i class="fas fa-book-open"></i> Parcial 2</h3>
+            
+            <!-- 2.1 Clase Abstracta vs Interfaz -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-shapes"></i>
+                </div>
+                <div class="project-content">
+                    <h4>2.1.- Clase Abstracta vs Interfaz en Java</h4>
+                    <div class="code-block">
+                        <h5>Clase Abstracta</h5>
+                        <p>Una clase abstracta es una clase que no puede ser instanciada directamente, sino que debe ser extendida por otras clases. Puede contener:</p>
+                        <ul>
+                            <li>Métodos abstractos (sin implementación)</li>
+                            <li>Métodos concretos (con implementación)</li>
+                            <li>Campos (variables)</li>
+                            <li>Constructores</li>
+                            <li>Métodos estáticos y finales</li>
+                        </ul>
+                        <p>Se usa cuando las clases hijas comparten una relación "es-un" y tienen funcionalidad común.</p>
+
+                        <h5>Interfaz</h5>
+                        <p>Una interfaz es una colección de métodos abstractos (a partir de Java 8 también puede tener métodos default y estáticos). Las interfaces:</p>
+                        <ul>
+                            <li>Solo pueden contener constantes (public static final)</li>
+                            <li>Métodos abstractos (antes de Java 8)</li>
+                            <li>No pueden tener constructores</li>
+                            <li>No pueden tener campos de instancia</li>
+                            <li>A partir de Java 8 pueden tener métodos default y estáticos con implementación</li>
+                        </ul>
+                        <p>Se usan para definir contratos que las clases deben implementar, permitiendo múltiples herencias de comportamiento.</p>
+
+                        <h5>Ejemplo en Java</h5>
+                        <pre><code>// Interfaz
+interface PuedeNadar {
+    void nadar(); // método abstracto
+    
+    default void respirarBajoAgua() { // método default (Java 8+)
+        System.out.println("Tomando aire bajo el agua");
+    }
+}
+
+// Clase abstracta
+abstract class Animal {
+    private String nombre;
+    
+    public Animal(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    abstract void hacerSonido(); // método abstracto
+    
+    public void dormir() { // método concreto
+        System.out.println(nombre + " está durmiendo");
+    }
+}
+
+// Clase concreta que extiende Animal e implementa PuedeNadar
+class Ballena extends Animal implements PuedeNadar {
+    public Ballena(String nombre) {
+        super(nombre);
+    }
+    
+    @Override
+    void hacerSonido() {
+        System.out.println(getNombre() + " hace sonidos de ballena");
+    }
+    
+    @Override
+    public void nadar() {
+        System.out.println(getNombre() + " está nadando majestuosamente");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Ballena moby = new Ballena("Moby Dick");
+        moby.hacerSonido(); // método abstracto implementado
+        moby.dormir();      // método heredado de Animal
+        moby.nadar();       // método de la interfaz
+        moby.respirarBajoAgua(); // método default de la interfaz
+    }
+}</code></pre>
+
+                        <h5>Salida esperada:</h5>
+                        <pre>Moby Dick hace sonidos de ballena
+Moby Dick está durmiendo
+Moby Dick está nadando majestuosamente
+Tomando aire bajo el agua</pre>
+
+                        <h5>Cuando usar cada una:</h5>
+                        <p><strong>Usa clase abstracta cuando:</strong></p>
+                        <ul>
+                            <li>Quieres compartir código entre varias clases relacionadas</li>
+                            <li>Necesitas declarar campos no estáticos o no finales</li>
+                            <li>Quieres definir constructores</li>
+                        </ul>
+                        
+                        <p><strong>Usa interfaz cuando:</strong></p>
+                        <ul>
+                            <li>Quieres definir un contrato para clases no relacionadas</li>
+                            <li>Necesitas múltiples herencias de tipo</li>
+                            <li>Quieres especificar comportamiento sin implementación (antes de Java 8)</li>
+                            <li>Quieres añadir funcionalidad a clases existentes sin modificar su herencia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2.2 Ejemplo de Clase Abstracta (Cuenta) -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-piggy-bank"></i>
+                </div>
+                <div class="project-content">
+                    <h4>2.2.- Ejemplo de Clase Abstracta: Sistema de Cuentas Bancarias</h4>
+                    <p>Implementación de un sistema de cuentas bancarias usando una clase abstracta <code>Cuenta</code> y una clase concreta <code>CuentaBasica</code>.</p>
+                    
+                    <h5>Cuenta.java (Clase abstracta)</h5>
+                    <pre><code>public abstract class Cuenta {
+    private String nombre;
+    private String no_cuenta;
+    private double saldo;
+
+    public void defineNombre(String nom) {
+        nombre = nom;
+    }
+
+    public void defineNoCuenta(String no_cta) {
+        no_cuenta = no_cta;
+    }
+
+    public void defineSaldoInicial(double sal) {
+        saldo = sal;
+    }
+
+    public void incrementaSaldo(double valor) {
+        saldo = saldo + valor;
+    }
+
+    public double informaSaldo() {
+        return saldo;
+    }
+
+    public void imprimeEstadoCta() {
+        System.out.println("Titular de la cuenta: " + nombre);
+        System.out.println("Número de la cuenta: " + no_cuenta);
+        System.out.println("Saldo de la cuenta: " + saldo);
+    }
+
+    public abstract void generaInteres(int mes);
+}</code></pre>
+
+                    <h5>CuentaBasica.java (Clase concreta)</h5>
+                    <pre><code>public class CuentaBasica extends Cuenta {
+    public void generaInteres(int mes) {
+        double interes = super.informaSaldo();
+        interes = interes * 0.01;
+        super.incrementaSaldo(interes);
+    }
+}</code></pre>
+
+                    <h5>Main.java (Ejecución)</h5>
+                    <pre><code>public class Main {
+    public static void main(String[] args) {
+        CuentaBasica cuenta1 = new CuentaBasica();
+        cuenta1.defineNombre("Alberto Martinez Pacheco");
+        cuenta1.defineNoCuenta("001");
+        cuenta1.defineSaldoInicial(1000);
+        
+        System.out.println("Corrida de interes Anual:");
+        for(int x = 1; x <= 12; x++) {
+            System.out.println("MES " + x);
+            System.out.println("*************************" + x);
+            cuenta1.generaInteres(x);
+            cuenta1.imprimeEstadoCta();
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+            
+            <!-- 2.3 Presentación sobre POO -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-presentation"></i>
+                </div>
+                <div class="project-content">
+                    <h4>2.3.- Presentación: Programación Orientada a Objetos</h4>
+                    <p>Presentación detallada sobre los conceptos fundamentales de Programación Orientada a Objetos.</p>
+                    <a href="https://docs.google.com/presentation/d/1PwpBGKVAAtHg7H-uzkjICXIrdhxSVUiT/edit?usp=drive_link&ouid=102620897780908397328&rtpof=true&sd=true" target="_blank" class="btn">
+                        <i class="fas fa-external-link-alt"></i> Ver presentación
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 2.3.1 a 2.3.4 - Documentación adicional -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-folder-open"></i>
+                </div>
+                <div class="project-content">
+                    <h4>2.3.1 a 2.3.4 - Documentación adicional sobre POO</h4>
+                    <p>Recursos complementarios sobre Programación Orientada a Objetos:</p>
+                    <div class="document-links">
+                        <a href="https://drive.google.com/drive/folders/11QPCqnuxnLWWP-A3K4XrQmrSTnOPvNWg" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> 2.3.1 - Fundamentos POO
+                        </a>
+                        <a href="https://drive.google.com/drive/folders/1Ngv8J65e3-pJ5dB9HwpWALNr_J-tVadM?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> 2.3.2 - Ejemplos prácticos
+                        </a>
+                        <a href="https://drive.google.com/drive/folders/1yI415Bh67aW64GYN9hYfp3ho8saQdbJj?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> 2.3.3 - Casos de estudio
+                        </a>
+                        <a href="https://drive.google.com/drive/folders/17TxGqFagkOofFRP_p1rB2U39CJ-WR5C3?usp=sharing" target="_blank" class="btn">
+                            <i class="fas fa-external-link-alt"></i> 2.3.4 - Ejercicios resueltos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NUEVO CONTENIDO PARA EL PARCIAL 3 -->
+        <div class="parcial-section">
+            <h3><i class="fas fa-book-open"></i> Parcial 3</h3>
+            
+            <!-- 3.1 Actualización Portafolio con diagramas UML -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="project-content">
+                    <h4>3.1.- Actualización Portafolio con Diagramas UML</h4>
+                    <p>Inclusión de diagramas UML en el portafolio:</p>
+                    <ul>
+                        <li>Diagrama de componentes</li>
+                        <li>Diagrama de actividades</li>
+                        <li>Diagrama de objetos</li>
+                    </ul>
+                    <a href="https://drive.google.com/drive/folders/1OfmqyGzpXZM635ahaUxaJ52AAOD454sY?usp=sharing" target="_blank" class="btn">
+                        <i class="fas fa-external-link-alt"></i> Ver diagramas
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 3.2 Diagrama de secuencia avance -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="project-content">
+                    <h4>3.2.- Diagrama de Secuencia: Avance</h4>
+                    <h5>Definición del Problema</h5>
+                    <p>En el local comercial objeto de estudio, existen cuatro cajas registradoras destinadas al proceso de cobro a clientes. Las cajas 1, 2 y 3 están interconectadas a un mismo servidor central que gestiona las operaciones de venta, tanto en efectivo como con tarjeta, y todas deben realizar su corte diario de operaciones antes de las 12:00 de la noche. De forma similar, la caja 4, aunque independiente de las anteriores, también está sujeta al mismo requerimiento de cierre diario de efectivo y pagos con tarjeta antes de la medianoche.</p>
+                    
+                    <p>El problema surge debido a que el proceso de cierre de caja implica temporalmente que dicha caja no esté disponible para realizar cobros, lo que reduce la cantidad de estaciones operativas en ese momento. En particular, si el cierre de múltiples cajas coincide o se realiza sin coordinación adecuada, se corre el riesgo de que ninguna caja esté disponible para atender a los clientes, provocando acumulación de personas en fila, retrasos en el servicio y potencial pérdida de ventas.</p>
+                    
+                    <a href="https://drive.google.com/drive/folders/1OfmqyGzpXZM635ahaUxaJ52AAOD454sY?usp=sharing" target="_blank" class="btn">
+                        <i class="fas fa-external-link-alt"></i> Ver diagrama de secuencia
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 3.3 Diagrama de secuencia cierre -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                <div class="project-content">
+                    <h4>3.3.- Diagrama de Secuencia: Cierre</h4>
+                    <p>Diagrama de secuencia que muestra el proceso controlado para gestionar los horarios de corte de caja, asegurando la disponibilidad continua de al menos una caja funcional.</p>
+                    
+                    <a href="https://drive.google.com/drive/folders/1OfmqyGzpXZM635ahaUxaJ52AAOD454sY?usp=sharing" target="_blank" class="btn">
+                        <i class="fas fa-external-link-alt"></i> Ver diagrama de cierre
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 3.4 Resumen de diagramas -->
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="project-content">
+                    <h4>3.4.- Resumen de Diagramas UML</h4>
+                    <div class="document-content">
+                        <h5>Resumen Ampliado de Diagramas UML</h5>
+                        <p>El Lenguaje Unificado de Modelado, conocido como UML (Unified Modeling Language), es una herramienta esencial en el ámbito de la ingeniería de software para visualizar, especificar, construir y documentar los artefactos de un sistema. Entre los diversos tipos de diagramas que ofrece UML, destacan seis por su relevancia en el análisis y diseño orientado a objetos: diagrama de objetos, diagrama de componentes, diagrama de actividades, diagrama de estados, diagrama de secuencias y diagrama de clases. Cada uno cumple un propósito específico y complementario dentro del proceso de desarrollo, permitiendo representar de manera gráfica distintos aspectos del comportamiento y la estructura del sistema.</p>
+
+                        <h5>1. Diagrama de Objetos</h5>
+                        <p>El diagrama de objetos es una representación estática que muestra instancias específicas de clases en un momento determinado. En otras palabras, mientras que el diagrama de clases representa el diseño general y abstracto de las entidades del sistema, el diagrama de objetos presenta un ejemplo concreto de cómo lucen dichas entidades durante la ejecución.</p>
+
+                        <h5>2. Diagrama de Componentes</h5>
+                        <p>El diagrama de componentes representa la estructura física del sistema, es decir, la organización y las dependencias entre los componentes de software. Cada componente se puede considerar una unidad lógica de implementación, como archivos ejecutables, bibliotecas, paquetes o módulos.</p>
+
+                        <h5>3. Diagrama de Actividades</h5>
+                        <p>El diagrama de actividades representa flujos de trabajo o procesos dentro del sistema. Se utiliza para modelar el comportamiento dinámico de un sistema, particularmente en lo que respecta a la lógica de control, decisiones, concurrencia y sincronización.</p>
+
+                        <h5>4. Diagrama de Estados</h5>
+                        <p>El diagrama de estados, también llamado diagrama de máquinas de estado, se utiliza para modelar los distintos estados por los que puede pasar un objeto a lo largo de su ciclo de vida, así como las transiciones que se producen entre esos estados debido a eventos específicos.</p>
+
+                        <h5>5. Diagrama de Secuencias</h5>
+                        <p>El diagrama de secuencias pertenece al conjunto de diagramas de interacción de UML y se enfoca en mostrar cómo interactúan los objetos entre sí a lo largo del tiempo. Representa el flujo de mensajes entre objetos para llevar a cabo una función o proceso en particular.</p>
+
+                        <h5>6. Diagrama de Clases</h5>
+                        <p>El diagrama de clases es uno de los más fundamentales en UML, ya que representa la estructura estática del sistema. Muestra las clases del sistema, sus atributos, métodos (operaciones) y las relaciones entre ellas, como asociaciones, herencia, agregación y composición.</p>
+
+                        <h5>Conclusión</h5>
+                        <p>Los diagramas UML constituyen una herramienta poderosa para el modelado de sistemas orientados a objetos. Cada tipo de diagrama cumple un papel específico que contribuye a una mejor comprensión, diseño y documentación del software. En conjunto, permiten al equipo de desarrollo visualizar tanto la estructura estática como el comportamiento dinámico del sistema.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 JAFET - E-Portafolio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
